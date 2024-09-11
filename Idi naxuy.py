@@ -1,9 +1,10 @@
 import aiohttp
 import os
+import tempfile
 from .. import loader
 from telethon.tl.types import Message
 
-__version__ = (1, 0, 0)  # Текущая версия модуля
+version = (1, 0, 0)  # Текущая версия модуля
 
 @loader.tds
 class Idinaxuy(loader.Module):
@@ -16,7 +17,7 @@ class Idinaxuy(loader.Module):
     async def client_ready(self):
         """Автоматическое обновление модуля"""
         url = "https://raw.githubusercontent.com/musiczhara0/sosat/main/Idi%20naxuy.py"
-        module_path = os.path.abspath(__file__)
+        module_name = "Idi naxuy"
 
         try:
             async with aiohttp.ClientSession() as session:
@@ -36,11 +37,19 @@ class Idinaxuy(loader.Module):
             if remote_version and remote_version > version:
                 print(f"Обновление доступно: текущая версия {version}, удаленная версия {remote_version}")
 
-                # Сохраняем новую версию модуля в текущий файл
-                with open(module_path, "w", encoding="utf-8") as module_file:
-                    module_file.write(content)
+                # Создание временного файла для нового содержимого
+                with tempfile.NamedTemporaryFile(delete=False, mode='w', encoding='utf-8') as temp_file:
+                    temp_file.write(content)
+                    temp_file_path = temp_file.name
 
-                # Важно: Модуль будет обновлен только после перезагрузки Hikka. Перезагрузка модуля здесь не осуществляется.
+                # Замена текущего модуля на новый
+                # Необходимо убедиться, что модуль загружен и не используется в данный момент
+                try:
+                    os.replace(temp_file_path, os.path.abspath(__file__))
+                    print("Модуль обновлен. Пожалуйста, перезагрузите Hikka.")
+                except Exception as e:
+                    print(f"Ошибка при обновлении модуля: {e}")
+
         except Exception as e:
             print(f"Ошибка при обновлении модуля: {e}")
 
