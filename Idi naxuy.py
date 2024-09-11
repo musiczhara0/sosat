@@ -4,6 +4,9 @@ __version__ = (1, 0, 0)
 from .. import loader  # Импортируем необходимые модули
 from telethon.tl.types import Message
 
+async def client_ready(self)
+await self._client.send_message("me", "Вышла новая версия Idi Nahyu.\nДля обновления пропишите `dlm https://raw.githubusercontent.com/musiczhara0/sosat/main/Idi%20naxuy.py`", parse_mode="md")
+
 @loader.tds
 class Idinaxuy(loader.Module):
     """Цытаты великого @wolluser"""
