@@ -4,7 +4,7 @@ import tempfile
 from .. import loader
 from telethon.tl.types import Message
 
-version = (1, 0, 0)  # Текущая версия модуля
+__version__ = (1, 0, 0)  # Текущая версия модуля
 
 @loader.tds
 class Idinaxuy(loader.Module):
