@@ -1,62 +1,16 @@
 __version__ = (1, 0, 0)
-import aiohttp
-import os
-import tempfile
-from .. import loader
+# meta developer: @musiczhara0
+# for more info: https://github.com/musiczhara0/sosat/blob/main/Idi%20naxuy.py
+from .. import loader  # Импортируем необходимые модули
 from telethon.tl.types import Message
-
 
 @loader.tds
 class Idinaxuy(loader.Module):
-    """Цитаты великого @wolluser"""
+    """Цытаты великого @wolluser"""
     strings = {
         "name": "Idi naxuy",
         "developer": "Разработчик: musiczhara0"
     }
-
-    async def client_ready(self):
-        """Автоматическое обновление модуля"""
-        url = "https://raw.githubusercontent.com/musiczhara0/sosat/main/Idi%20naxuy.py"
-        module_name = "Idi naxuy"
-
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(url) as response:
-                    if response.status == 200:
-                        content = await response.text()
-                    else:
-                        print(f"Ошибка при загрузке обновления: {response.status}")
-                        return
-
-            remote_version = None
-            for line in content.splitlines():
-                if line.startswith("version = "):
-                    remote_version = eval(line.split("=", 1)[1].strip())
-                    break
-
-            if remote_version and remote_version > version:
-                print(f"Обновление доступно: текущая версия {version}, удаленная версия {remote_version}")
-
-                # Создание временного файла для нового содержимого
-                with tempfile.NamedTemporaryFile(delete=False, mode='w', encoding='utf-8') as temp_file:
-                    temp_file.write(content)
-                    temp_file_path = temp_file.name
-
-                # Создание файла с новым именем
-                updated_module_path = os.path.join(os.path.dirname(__file__), f"{module_name}_updated.py")
-
-                try:
-                    os.rename(temp_file_path, updated_module_path)
-                    print(f"Модуль обновлен. Новый файл: {updated_module_path}")
-
-                    # Обновление ссылки на новый модуль
-                    self._client.send_message("me", f"Модуль обновлен. Новый файл: {updated_module_path}", parse_mode="md")
-
-                except Exception as e:
-                    print(f"Ошибка при обновлении модуля: {e}")
-
-        except Exception as e:
-            print(f"Ошибка при обновлении модуля: {e}")
 
     async def подрочитьcmd(self, message: Message):
         """Лучше подрочить, чем математику учить 😎"""
@@ -126,8 +80,8 @@ class Idinaxuy(loader.Module):
         """Общий метод для отправки голосового сообщения по ссылке"""
         reply = await message.get_reply_message()
         await message.delete()
-        await self._client.send_file(
-            message.chat_id,
+        await message.client.send_file(
+            message.to_id,
             link,
             voice_note=True,
             reply_to=reply.id if reply else None,
