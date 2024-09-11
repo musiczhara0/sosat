@@ -1,10 +1,11 @@
+__version__ = (1, 0, 0)
 import aiohttp
 import os
 import tempfile
 from .. import loader
 from telethon.tl.types import Message
 
-__version__ = (1, 0, 0)  # Текущая версия модуля
+version = (1, 0, 0)  # Текущая версия модуля
 
 @loader.tds
 class Idinaxuy(loader.Module):
