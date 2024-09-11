@@ -10,7 +10,7 @@ version = (1, 0, 0)  # Текущая версия модуля
 class Idinaxuy(loader.Module):
     """Цитаты великого @wolluser"""
     strings = {
-        "__name__": "Idi naxuy",
+        "name": "Idi naxuy",
         "developer": "Разработчик: musiczhara0"
     }
 
@@ -25,7 +25,7 @@ class Idinaxuy(loader.Module):
                     if response.status == 200:
                         content = await response.text()
                     else:
-                        print("Ошибка при загрузке обновления: ", response.status)
+                        print(f"Ошибка при загрузке обновления: {response.status}")
                         return
 
             remote_version = None
@@ -42,11 +42,16 @@ class Idinaxuy(loader.Module):
                     temp_file.write(content)
                     temp_file_path = temp_file.name
 
-                # Замена текущего модуля на новый
-                # Необходимо убедиться, что модуль загружен и не используется в данный момент
+                # Создание файла с новым именем
+                updated_module_path = os.path.join(os.path.dirname(__file__), f"{module_name}_updated.py")
+
                 try:
-                    os.replace(temp_file_path, os.path.abspath(__file__))
-                    print("Модуль обновлен. Пожалуйста, перезагрузите Hikka.")
+                    os.rename(temp_file_path, updated_module_path)
+                    print(f"Модуль обновлен. Новый файл: {updated_module_path}")
+
+                    # Обновление ссылки на новый модуль
+                    self._client.send_message("me", f"Модуль обновлен. Новый файл: {updated_module_path}", parse_mode="md")
+
                 except Exception as e:
                     print(f"Ошибка при обновлении модуля: {e}")
 
