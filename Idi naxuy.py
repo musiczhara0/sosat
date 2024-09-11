@@ -10,7 +10,7 @@ version = (1, 0, 0)  # Текущая версия модуля
 class Idinaxuy(loader.Module):
     """Цитаты великого @wolluser"""
     strings = {
-        "name": "Idi naxuy",
+        "__name__": "Idi naxuy",
         "developer": "Разработчик: musiczhara0"
     }
 
