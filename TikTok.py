@@ -1,5 +1,4 @@
-__version__ = "1.0.0"
-"developer": "Разработчик: musiczhara0"
+
 from hikka import loader, utils
 import requests
 import random
