@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from hikka import loader, utils
 import requests
@@ -8,7 +9,7 @@ class TikTokModule(loader.Module):
     """TikTok Module"""
     strings = {"name": "TikTok"}
 
-    def init(self):
+    def __init__(self):
         self.config = loader.ModuleConfig(
             loader.ConfigValue(
                 "rapidapi_key",
@@ -19,11 +20,11 @@ class TikTokModule(loader.Module):
 
     async def api_call(self, method, endpoint, headers=None, params=None):
         """Метод для выполнения запроса к API"""
-        url = f"https://tiktok-apis.p.rapidapi.com/{endpoint}"
+        url = f"https://tiktok-api15.p.rapidapi.com/{endpoint}"
         if headers is None:
             headers = {
                 "X-RapidAPI-Key": self.config["rapidapi_key"],
-                "X-RapidAPI-Host": "tiktok-apis.p.rapidapi.com"
+                "X-RapidAPI-Host": "tiktok-api15.p.rapidapi.com"
             }
 
         try:
@@ -38,7 +39,7 @@ class TikTokModule(loader.Module):
         result = await self.api_call("GET", "trending")
 
         if "error" in result:
-            await message.reply(f"Ошибка: {result['error']}")
+            await message.reply(f"Ошибка при получении данных: {result['error']}")
             return
 
         if not result.get("videos"):
@@ -53,3 +54,5 @@ class TikTokModule(loader.Module):
         else:
             await message.reply("Не удалось получить URL видео.")
 
+__version__ = "1.0.0"
+__author__ = "@musiczhara0"
