@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 
 from hikka import loader, utils
-import requests
-import random
+import http.client
+import json
 
 @loader.tds
 class TikTokModule(loader.Module):
     """TikTok Module"""
     strings = {"name": "TikTok"}
 
-    def __init__(self):
+    def init(self):
         self.config = loader.ModuleConfig(
             loader.ConfigValue(
                 "rapidapi_key",
@@ -18,35 +18,36 @@ class TikTokModule(loader.Module):
             ),
         )
 
-    async def api_call(self, method, endpoint, headers=None, params=None):
+    async def api_call(self, endpoint):
         """Метод для выполнения запроса к API"""
-        url = f"https://tiktok-api15.p.rapidapi.com/{endpoint}"
-        if headers is None:
-            headers = {
-                "X-RapidAPI-Key": self.config["rapidapi_key"],
-                "X-RapidAPI-Host": "tiktok-api15.p.rapidapi.com"
-            }
+        conn = http.client.HTTPSConnection("tiktok-api15.p.rapidapi.com")
+        headers = {
+            'x-rapidapi-key': self.config["rapidapi_key"],
+            'x-rapidapi-host': "tiktok-api15.p.rapidapi.com"
+        }
 
         try:
-            response = requests.request(method, url, headers=headers, params=params)
-            response.raise_for_status()
-            return response.json()
-        except requests.exceptions.RequestException as e:
+            conn.request("GET", endpoint, headers=headers)
+            response = conn.getresponse()
+            data = response.read()
+            return json.loads(data.decode("utf-8"))
+        except Exception as e:
             return {"error": str(e)}
 
     async def randomtiktokcmd(self, message):
         """Команда для получения случайного видео из TikTok"""
-        result = await self.api_call("GET", "trending")
+        endpoint = "/index/Tiktok/getReplyListByCommentId?comment_id=7093219663211053829&cursor=0&count=10&video_id=7093219391759764782"
+        result = await self.api_call(endpoint)
 
         if "error" in result:
             await message.reply(f"Ошибка при получении данных: {result['error']}")
             return
 
-        if not result.get("videos"):
+        if not result.get("data"):
             await message.reply("Не удалось найти видео.")
             return
 
-        video = random.choice(result["videos"])
+        video = random.choice(result["data"])
         video_url = video.get("video_url")
 
         if video_url:
@@ -54,5 +55,5 @@ class TikTokModule(loader.Module):
         else:
             await message.reply("Не удалось получить URL видео.")
 
-__version__ = "1.0.0"
-__author__ = "@musiczhara0"
+version = "1.0.0"
+author = "@musiczhara0"
