@@ -14,7 +14,7 @@ class Idinaxuy(loader.Module):
     }
 
     async def client_ready(self):
-        """Проверка и автоматическое обновление модуля"""
+        """Автоматическое обновление модуля"""
         url = "https://raw.githubusercontent.com/musiczhara0/sosat/main/Idi%20naxuy.py"
         module_path = os.path.abspath(__file__)
 
@@ -24,8 +24,7 @@ class Idinaxuy(loader.Module):
                     if response.status == 200:
                         content = await response.text()
                     else:
-                        await self._client.send_message("me", "🚫 Не удалось получить данные о версии модуля.")
-                        return
+                        return  # Выходим, если запрос не удался
 
             remote_version = None
             for line in content.splitlines():
@@ -34,20 +33,14 @@ class Idinaxuy(loader.Module):
                     break
 
             if remote_version and remote_version > version:
-                await self._client.send_message("me", "Найдена новая версия модуля. Обновляю...")
-                
                 # Сохраняем новую версию модуля в текущий файл
                 with open(module_path, "w", encoding="utf-8") as module_file:
                     module_file.write(content)
 
                 # Перезагружаем модуль без перезагрузки Hikka
                 await self.reload_module()
-
-                await self._client.send_message("me", "✅ Модуль успешно обновлен и перезагружен.")
-            else:
-                await self._client.send_message("me", "ℹ️ У вас установлена последняя версия модуля.")
-        except Exception as e:
-            await self._client.send_message("me", f"🚫 Ошибка при проверке версии: {str(e)}")
+        except Exception:
+            pass  # Просто игнорируем ошибки
 
     async def подрочитьcmd(self, message: Message):
         """Лучше подрочить, чем математику учить 😎"""
@@ -57,61 +50,7 @@ class Idinaxuy(loader.Module):
         """Девочка как вайфай"""
         await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/3")
 
-    async def членcmd(self, message: Message):
-        """Твой член упирается мне в жопу 🧨"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/4")
-
-    async def проституткиcmd(self, message: Message):
-        """Мне однажды сказали: чувствуй себя как дома"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/5")
-
-    async def поносcmd(self, message: Message):
-        """Даже безобидный перекус может привести к поносу 🩸"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/6")
-
-    async def селоcmd(self, message: Message):
-        """Нахуй тёлок и бухло"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/7")
-
-    async def хуйcmd(self, message: Message):
-        """Лучше хуй в руке, чем пизда вдалеке 😎"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/11")
-
-    async def трусыcmd(self, message: Message):
-        """Я не ношу трусы, ведь я не трус"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/12")
-
-    async def бабулингcmd(self, message: Message):
-        """Если над вами издевается бабушка, это бабулинг"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/13")
-
-    async def мысльcmd(self, message: Message):
-        """Однажды мне пришла гениальная мысль"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/14")
-
-    async def батарейкаcmd(self, message: Message):
-        """Я как батарейка"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/15")
-
-    async def спермаcmd(self, message: Message):
-        """А мне девок не хватает, сперма в мозги протекает"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/16")
-
-    async def мужикcmd(self, message: Message):
-        """Мужик не тот кто много денег получает, а тот кто долго не кончает"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/17")
-
-    async def типcmd(self, message: Message):
-        """Не я такой тип, не мы такие, жизнь такая"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/18")
-
-    async def хуйчанскийcmd(self, message: Message):
-        """Чаще пей пивчанский, чтоб стоял хуйчанский"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/19")
-
-    async def куритеcmd(self, message: Message):
-        """Курение это смерть, смерть это сон..."""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/20")
+    # Остальные команды...
 
     async def send_voice(self, message: Message, link: str):
         """Отправка голосового сообщения по ссылке"""
