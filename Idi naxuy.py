@@ -2,7 +2,7 @@ import requests
 from .. import loader
 from telethon.tl.types import Message
 
-__version__ = (1, 0, 0)  # Текущая версия модуля
+__version__ = (1, 0, 1)  # Текущая версия модуля
 
 @loader.tds
 class Idinaxuy(loader.Module):
