@@ -1,16 +1,43 @@
-__version__ = (1, 0, 0)
-# meta developer: @musiczhara0
-# for more info: https://github.com/musiczhara0/sosat/blob/main/Idi%20naxuy.py
-from .. import loader  # Импортируем необходимые модули
+import requests
+from .. import loader
 from telethon.tl.types import Message
+
+__version__ = (1, 0, 0)  # Текущая версия модуля
 
 @loader.tds
 class Idinaxuy(loader.Module):
-    """Цытаты великого @wolluser"""
+    """Цитаты великого @wolluser"""
     strings = {
         "name": "Idi naxuy",
         "developer": "Разработчик: musiczhara0"
     }
+
+    async def client_ready(self):
+        """Функция для проверки обновлений модуля при старте"""
+        url = "https://raw.githubusercontent.com/musiczhara0/sosat/main/Idi%20naxuy.py"
+        try:
+            response = requests.get(url)
+            response.raise_for_status()  # Проверка успешности запроса
+        except requests.exceptions.RequestException as e:
+            await self._client.send_message("me", f"🚫 Загрузка не удалась. Ошибка: {str(e)}")
+            return
+        
+        try:
+            remote_version = None
+            for line in response.text.splitlines():
+                if line.startswith("version = "):
+                    remote_version = eval(line.split("=", 1)[1].strip())  # Извлечение версии
+                    break
+
+            if remote_version and remote_version > version:
+                await self._client.send_message(
+                    "me",
+                    "Вышла новая версия модуля Idi Naxuy.\nДля обновления пропишите `dlm https://raw.githubusercontent.com/musiczhara0/sosat/main/Idi%20naxuy.py`"
+                )
+            else:
+                await self._client.send_message("me", "ℹ️ У вас установлена последняя версия модуля.")
+        except Exception as e:
+            await self._client.send_message("me", f"🚫 Ошибка при проверке версии: {str(e)}")
 
     async def подрочитьcmd(self, message: Message):
         """Лучше подрочить, чем математику учить 😎"""
@@ -77,11 +104,11 @@ class Idinaxuy(loader.Module):
         await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/20")
 
     async def send_voice(self, message: Message, link: str):
-        """Общий метод для отправки голосового сообщения по ссылке"""
+        """Отправка голосового сообщения по ссылке"""
         reply = await message.get_reply_message()
         await message.delete()
-        await message.client.send_file(
-            message.to_id,
+        await self._client.send_file(
+            message.chat_id,
             link,
             voice_note=True,
             reply_to=reply.id if reply else None,
