@@ -1,19 +1,18 @@
-__version__ = (1, 0, 1)
+version = (1, 0, 1)
 # meta developer: @musiczhara0
 # for more info: https://github.com/musiczhara0/sosat/blob/main/Idi%20naxuy.py
 from .. import loader  # Импортируем необходимые модули
 from telethon.tl.types import Message
 
-  async def client_ready(self)
-  await self._client.send_message("me", "Вышла новая версия Idi Nahyu.\nДля обновления пропишите `dlm https://raw.githubusercontent.com/musiczhara0/sosat/main/Idi%20naxuy.py`", parse_mode="md")
-
-@loader.tds
 class Idinaxuy(loader.Module):
     """Цытаты великого @wolluser"""
     strings = {
         "name": "Idi naxuy",
         "developer": "Разработчик: musiczhara0"
     }
+
+    async def client_ready(self):
+        await self._client.send_message("me", "Вышла новая версия Idi Nahyu.\nДля обновления пропишите dlm https://raw.githubusercontent.com/musiczhara0/sosat/main/Idi%20naxuy.py", parse_mode="md")
 
     async def подрочитьcmd(self, message: Message):
         """Лучше подрочить, чем математику учить 😎"""
@@ -55,37 +54,4 @@ class Idinaxuy(loader.Module):
         """Однажды мне пришла гениальная мысль"""
         await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/14")
 
-    async def батарейкаcmd(self, message: Message):
-        """Я как батарейка"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/15")
-
-    async def спермаcmd(self, message: Message):
-        """А мне девок не хватает, сперма в мозги протекает"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/16")
-
-    async def мужикcmd(self, message: Message):
-        """Мужик не тот кто много денег получает, а тот кто долго не кончает"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/17")
-
-    async def типcmd(self, message: Message):
-        """Не я такой тип, не мы такие, жизнь такая"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/18")
-
-    async def хуйчанскийcmd(self, message: Message):
-        """Чаще пей пивчанский, чтоб стоял хуйчанский"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/19")
-
-    async def куритеcmd(self, message: Message):
-        """Курение это смерть, смерть это сон..."""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/20")
-
-    async def send_voice(self, message: Message, link: str):
-        """Общий метод для отправки голосового сообщения по ссылке"""
-        reply = await message.get_reply_message()
-        await message.delete()
-        await message.client.send_file(
-            message.to_id,
-            link,
-            voice_note=True,
-            reply_to=reply.id if reply else None,
-        )
+   
