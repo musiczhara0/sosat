@@ -5,7 +5,7 @@ from .. import loader  # Импортируем необходимые моду�
 from telethon.tl.types import Message
 
 @loader.tds
-class Idinaxuy(loader.Module):
+class идинахуй(loader.Module):
     """Цытаты великого @wolluser"""
     
     strings = {
