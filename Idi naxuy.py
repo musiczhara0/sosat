@@ -1,4 +1,4 @@
-__version__ = (1, 0, 0)
+__version__ = (1, 0, 1)
 # meta developer: @musiczhara0
 # for more info: https://github.com/musiczhara0/sosat/blob/main/Idi%20naxuy.py
 from .. import loader  # Импортируем необходимые модули
@@ -7,7 +7,8 @@ from telethon.tl.types import Message
 @loader.tds
 class Idinaxuy(loader.Module):
     """Цытаты великого @wolluser"""
-        self.strings = {"name":"Иди нахуй"}
+       strings = {
+        "name": "Иди нахуй",
         "developer": "Разработчик: musiczhara0"
     }
 
