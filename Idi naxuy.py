@@ -1,4 +1,4 @@
-__version__ = (1, 0, 1)
+__version__ = (1, 0, 2)
 # meta developer: @musiczhara0
 # for more info: https://github.com/musiczhara0/sosat/blob/main/Idi%20naxuy.py
 from .. import loader  # Импортируем необходимые модули
@@ -76,6 +76,10 @@ class идинахуй(loader.Module):
     async def куритеcmd(self, message: Message):
         """Курение это смерть, смерть это сон..."""
         await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/20")
+
+    async def циганкаcmd(self, message: Message):
+        """Однажды ко мне подошла циганка чтобы погадать, но она не угадала что я ей дам по ебалу"""
+        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/21")
 
     async def send_voice(self, message: Message, link: str):
         """Общий метод для отправки голосового сообщения по ссылке"""
