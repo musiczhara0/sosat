@@ -7,7 +7,9 @@ from telethon.tl.types import Message
 @loader.tds
 class Idinaxuy(loader.Module):
     """Цытаты великого @wolluser"""
-    strings = {"name": "Иди нахуй"},
+    
+    strings = {
+        "name": "Иди нахуй",
         "developer": "Разработчик: musiczhara0"
     }
 
