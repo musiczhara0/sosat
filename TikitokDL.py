@@ -1,4 +1,4 @@
-__version__ = (1, 0, 2)
+__version__ = (1, 0, 0)
 # meta developer: @musiczhara0
 # for more info: https://raw.githubusercontent.com/musiczhara0/sosat/main/TikitokDL.py
 
