@@ -1,33 +1,32 @@
 __version__ = (1, 0, 0)
-# meta developer: @musiczhara0
-
-import aiohttp
+from tiktok_downloader import snaptik
 import tempfile
 import os
 
 from .. import loader, utils
 
+
 @loader.tds
-class TikitokDLMod(loader.Module):
-    """Модуль для скачивания видео из Tik Tok"""
+class TikiTokDLMod(loader.Module):
+    """A module for downloading videos from TikTok without a watermark"""
 
     strings = {
-        "name": "TikitokDL",
+        "name": "TikiTokDL",
         "args_no": "❌ Specify the TikTok video link",
-        "download": "⬇️ Downloading video...",
-        "done": "🎥 Here is your TikTok video",
+        "download": "⬇️ Downloading the video...",
+        "done": "🎥 Your TikTok video is ready",
         "error": "❌ Error downloading video: {}",
     }
 
     strings_ru = {
         "args_no": "❌ Укажите ссылку на видео TikTok",
         "download": "⬇️ Загрузка видео...",
-        "done": "🎥 Ваше видео с TikTok",
+        "done": "🎥 Ваше видео с TikTok готово",
         "error": "❌ Ошибка при скачивании видео: {}",
     }
 
     async def tikicmd(self, message):
-        """Скачивает видео с TikTok по ссылке"""
+        """Download video from TikTok by link"""
         args = utils.get_args_raw(message)
         if not args:
             await utils.answer(message, self.strings("args_no"))
@@ -36,20 +35,20 @@ class TikitokDLMod(loader.Module):
         await utils.answer(message, self.strings("download"))
 
         try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(f"https://api.onlysq.ru/tiktok/v1?url={args}") as response:
-                    response.raise_for_status()
-                    video_data = await response.read()
+            get_video = snaptik(f"{args}")
+            get_video_list = list(get_video)
 
-                    with tempfile.NamedTemporaryFile(suffix=".mp4", delete=False) as temp_file:
-                        temp_file.write(video_data)
-                        temp_file_path = temp_file.name
+            with tempfile.NamedTemporaryFile(suffix=".mp4", delete=False) as temp_file:
+                get_video_list[0].download(temp_file.name)
+                temp_file_path = temp_file.name
 
-                    with open(temp_file_path, "rb") as video:
-                        await message.client.send_file(message.to_id, video, caption=self.strings("done"))
+            with open(temp_file_path, "rb") as video:
+                await message.client.send_file(
+                    message.to_id, video, caption=self.strings("done")
+                )
 
-                    os.remove(temp_file_path)
-                    await message.delete()
+            os.remove(temp_file_path)
+            await message.delete()
 
         except Exception as e:
             await utils.answer(message, self.strings("error").format(e))
