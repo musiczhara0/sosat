@@ -16,14 +16,14 @@ class TikitokDLMod(loader.Module):
         "args_no": "❌ Specify the TikTok video link",
         "download": "⬇️ Downloading video...",
         "done": "🎥 Here is your TikTok video",
-        "error": "❌ Error downloading video: {str(e)}",
+        "error": "❌ Error downloading video: {}",
     }
 
     strings_ru = {
         "args_no": "❌ Укажите ссылку на видео TikTok",
         "download": "⬇️ Загрузка видео...",
         "done": "🎥 Ваше видео с TikTok",
-        "error": "❌ Ошибка при скачивании видео: {str(e)}",
+        "error": "❌ Ошибка при скачивании видео: {}",
     }
 
     async def tikicmd(self, message):
@@ -52,4 +52,4 @@ class TikitokDLMod(loader.Module):
                     await message.delete()
 
         except Exception as e:
-            await utils.answer(message, self.strings("error").format(e=e))
+            await utils.answer(message, self.strings("error").format(e))
