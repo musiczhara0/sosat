@@ -15,10 +15,10 @@ class TikiTokDLMod(loader.Module):
     strings = {
         "name": "TikiTokDL",
         "developer": "Разработчик: musiczhara0",
-        "args_no": "❌ Specify the TikTok video link",
-        "download": "⬇️ Downloading the video...",
-        "done": "🎥 Your TikTok video is ready",
-        "error": "❌ Error downloading video: {}",
+        "args_no": "❌‼️ʏᴏᴜ ᴅɪᴅɴ'ᴛ ᴘʀᴏᴠɪᴅᴇ ᴀ ʟɪɴᴋ ᴛᴏ ᴛʜᴇ ᴠɪᴅᴇᴏ‼️",
+        "download": "⏳",
+        "done": "🎥 ᴛʜᴇ ᴠɪᴅᴇᴏ ɪs ʀᴇᴀᴅʏ 📺",
+        "error": "❌‼️ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜɪʟᴇ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ᴛʜᴇ ᴠɪᴅᴇᴏ: {}",
     }
 
     strings_ru = {
