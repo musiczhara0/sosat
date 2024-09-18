@@ -14,6 +14,7 @@ class TikiTokDLMod(loader.Module):
 
     strings = {
         "name": "TikiTokDL",
+        "developer": "Разработчик: musiczhara0",
         "args_no": "❌ Specify the TikTok video link",
         "download": "⬇️ Downloading the video...",
         "done": "🎥 Your TikTok video is ready",
