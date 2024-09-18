@@ -15,17 +15,17 @@ class TikiTokDLMod(loader.Module):
     strings = {
         "name": "TikiTokDL",
         "developer": "Разработчик: musiczhara0",
-        "args_no": "❌ Specify the TikTok video link",
-        "download": "⬇️ Downloading the video...",
-        "done": "🎥 Your TikTok video is ready",
-        "error": "❌ Error downloading video: {}",
+        "args_no": "❌‼️ʏᴏᴜ ᴅɪᴅɴ'ᴛ ᴘʀᴏᴠɪᴅᴇ ᴀ ʟɪɴᴋ ᴛᴏ ᴛʜᴇ ᴠɪᴅᴇᴏ‼️,
+        "download": "⏳",
+        "done": "🎥 ᴛʜᴇ ᴠɪᴅᴇᴏ ɪs ʀᴇᴀᴅʏ 📺",
+        "error": "❌‼️ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜɪʟᴇ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ᴛʜᴇ ᴠɪᴅᴇᴏ: {}",
     }
 
     strings_ru = {
-        "args_no": "❌ Укажите ссылку на видео TikTok",
-        "download": "⬇️ Загрузка видео...",
-        "done": "🎥 Ваше видео с TikTok готово",
-        "error": "❌ Ошибка при скачивании видео: {}",
+        "args_no": "❌‼️Ⲧы ⲏⲉ ⲩⲕⲁⳅⲁⲗ ⲥⲥыⲗⲕⲩ ⲏⲁ ⲃυⲇⲟⲥ‼️",
+        "download": "⏳",
+        "done": "🎥 Ⲃυⲇⲟⲥ ⲅⲟⲧⲟⲃ 📺",
+        "error": "❌‼️Ⲥⲗⲩⳡυⲗⲁⲥь ⲟⲱυⳝⲕⲁ ⲡⲣυ ⲥⲕⲁⳡυⲃⲁⲏυυ ⲃυⲇⲉⲟ: {}",
     }
 
     async def tikicmd(self, message):
