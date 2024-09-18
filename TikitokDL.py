@@ -23,8 +23,8 @@ class TikiTokDLMod(loader.Module):
 
     strings_ru = {
         "args_no": "❌‼️Ⲧы ⲏⲉ ⲩⲕⲁⳅⲁⲗ ⲥⲥыⲗⲕⲩ ⲏⲁ ⲃυⲇⲟⲥ‼️",
-        "download": "🎥 Ⲃυⲇⲟⲥ ⲅⲟⲧⲟⲃ 📺",
-        "done": "🎥 Ваше видео с TikTok готово",
+        "download": "⏳",
+        "done": "🎥 Ⲃυⲇⲟⲥ ⲅⲟⲧⲟⲃ 📺",
         "error": "❌‼️Ⲥⲗⲩⳡυⲗⲁⲥь ⲟⲱυⳝⲕⲁ ⲡⲣυ ⲥⲕⲁⳡυⲃⲁⲏυυ ⲃυⲇⲉⲟ: {}",
     }
 
