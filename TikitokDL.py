@@ -22,10 +22,10 @@ class TikiTokDLMod(loader.Module):
     }
 
     strings_ru = {
-        "args_no": "❌ Укажите ссылку на видео TikTok",
-        "download": "⬇️ Загрузка видео...",
+        "args_no": "❌‼️Ⲧы ⲏⲉ ⲩⲕⲁⳅⲁⲗ ⲥⲥыⲗⲕⲩ ⲏⲁ ⲃυⲇⲟⲥ‼️",
+        "download": "🎥 Ⲃυⲇⲟⲥ ⲅⲟⲧⲟⲃ 📺",
         "done": "🎥 Ваше видео с TikTok готово",
-        "error": "❌ Ошибка при скачивании видео: {}",
+        "error": "❌‼️Ⲥⲗⲩⳡυⲗⲁⲥь ⲟⲱυⳝⲕⲁ ⲡⲣυ ⲥⲕⲁⳡυⲃⲁⲏυυ ⲃυⲇⲉⲟ: {}",
     }
 
     async def tikicmd(self, message):
