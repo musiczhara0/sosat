@@ -11,7 +11,7 @@ from .. import loader, utils
 
 @loader.tds
 class TikiTokDLMod(loader.Module):
-    """A module for downloading videos from TikTok without a watermark"""
+    """Модуль для скачивания видео из Tik Tok"""
 
     strings = {
         "name": "TikiTokDL",
