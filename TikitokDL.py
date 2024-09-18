@@ -1,4 +1,6 @@
 __version__ = (1, 0, 0)
+# meta developer: @musiczhara0
+
 from tiktok_downloader import snaptik
 import tempfile
 import os
