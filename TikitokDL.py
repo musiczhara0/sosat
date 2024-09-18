@@ -1,4 +1,4 @@
-__version__ = (1, 0, 1)
+__version__ = (1, 0, 2)
 # meta developer: @musiczhara0
 # for more info: https://raw.githubusercontent.com/musiczhara0/sosat/main/TikitokDL.py
 from tiktok_downloader import snaptik
@@ -13,18 +13,19 @@ class TikiTokDLMod(loader.Module):
     """Модуль для скачивания видео из Tik Tok"""
 
     strings = {
-        "name": "TikitokDL",
+        "name": "TikiTokDL",
+        "developer": "Разработчик: musiczhara0",
         "args_no": "❌ Specify the TikTok video link",
-        "download": "⬇️ Downloading video...",
-        "done": "🎥 Here is your TikTok video",
-        "error": "❌ Error downloading video: {str(e)}",
+        "download": "⬇️ Downloading the video...",
+        "done": "🎥 Your TikTok video is ready",
+        "error": "❌ Error downloading video: {}",
     }
 
     strings_ru = {
-        "args_no": "❌‼️Ты не указал ссылку на видос‼️",
+        "args_no": "❌ Укажите ссылку на видео TikTok",
         "download": "⬇️ Загрузка видео...",
-        "done": "🎥 Видос готов 📺",
-        "error": "❌‼️Случилась ошибка при скачивании видео: {}",
+        "done": "🎥 Ваше видео с TikTok готово",
+        "error": "❌ Ошибка при скачивании видео: {}",
     }
 
     async def tikicmd(self, message):
