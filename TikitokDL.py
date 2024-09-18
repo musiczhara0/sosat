@@ -1,5 +1,6 @@
-__version__ = (1, 0, 0)
+__version__ = (1, 0, 2)
 # meta developer: @musiczhara0
+# for more info:https://raw.githubusercontent.com/musiczhara0/sosat/main/TikitokDL.py
 
 from tiktok_downloader import snaptik
 import tempfile
