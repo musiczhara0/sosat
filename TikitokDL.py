@@ -28,7 +28,7 @@ class TikiTokDLMod(loader.Module):
     }
 
     async def tikicmd(self, message):
-        """Download video from TikTok by link"""
+        """- Вставьте ссылку для скачивания видео"""
         args = utils.get_args_raw(message)
         if not args:
             await utils.answer(message, self.strings("args_no"))
