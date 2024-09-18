@@ -13,12 +13,11 @@ class TikiTokDLMod(loader.Module):
     """Модуль для скачивания видео из Tik Tok"""
 
     strings = {
-        "name": "TikiTokDL",
-        "developer": "Разработчик: musiczhara0",
-        "args_no": "❌‼️ʏᴏᴜ ᴅɪᴅɴ'ᴛ ᴘʀᴏᴠɪᴅᴇ ᴀ ʟɪɴᴋ ᴛᴏ ᴛʜᴇ ᴠɪᴅᴇᴏ‼️,
-        "download": "⏳",
-        "done": "🎥 ᴛʜᴇ ᴠɪᴅᴇᴏ ɪs ʀᴇᴀᴅʏ 📺",
-        "error": "❌‼️ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜɪʟᴇ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ᴛʜᴇ ᴠɪᴅᴇᴏ: {}",
+        "name": "TikitokDL",
+        "args_no": "❌ Specify the TikTok video link",
+        "download": "⬇️ Downloading video...",
+        "done": "🎥 Here is your TikTok video",
+        "error": "❌ Error downloading video: {str(e)}",
     }
 
     strings_ru = {
