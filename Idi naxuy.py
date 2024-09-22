@@ -1,4 +1,4 @@
-__version__ = (1, 0, 2)
+__version__ = (1, 0, 3)
 # meta developer: @musiczhara0
 # for more info: https://github.com/musiczhara0/sosat/blob/main/Idi%20naxuy.py
 from .. import loader  # Импортируем необходимые модули
@@ -84,6 +84,10 @@ class идинахуй(loader.Module):
     async def тревогаcmd(self, message: Message):
         """Тревога тревога женщина в чате"""
         await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/22")
+
+    async def спокойнойночиcmd(self, message: Message):
+        """Спокойной ночи моя девочка"""
+        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/23")
     
     async def send_voice(self, message: Message, link: str):
         """Общий метод для отправки голосового сообщения по ссылке"""
