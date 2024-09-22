@@ -6,7 +6,7 @@ from telethon.tl.types import Message
 
 @loader.tds
 class идинахуй(loader.Module):
-    """Цытаты великого @wolluser"""
+    """Цытаты великого @wolluser и не только"""
     
     strings = {
         "name": "Иди нахуй",
@@ -81,6 +81,10 @@ class идинахуй(loader.Module):
         """Однажды ко мне подошла циганка чтобы погадать, но она не угадала что я ей дам по ебалу"""
         await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/21")
 
+    async def тревогаcmd(self, message: Message):
+        """Тревога тревога женщина в чате"""
+        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/22")
+    
     async def send_voice(self, message: Message, link: str):
         """Общий метод для отправки голосового сообщения по ссылке"""
         reply = await message.get_reply_message()
