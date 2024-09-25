@@ -41,6 +41,11 @@ class memes(loader.Module):
         """Единственная петарда которая взорвёться в этом году"""
         await self.send_voice(message, "https://telesco.pe/SosatXuyEtoXorosho/32")
 
+    async def скиньхуйcmd(self, message: Message):
+        """Скинь хуй"""
+        await self.send_voice(message, "https://telesco.pe/SosatXuyEtoXorosho/33")
+
+
     
     async def send_voice(self, message: Message, link: str):
         """Общий метод для отправки голосового сообщения по ссылке"""
