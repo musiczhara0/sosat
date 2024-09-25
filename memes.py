@@ -26,7 +26,7 @@ class memes(loader.Module):
         await self.send_voice(message, "https://telesco.pe/SosatXuyEtoXorosho/28")
 
     async def бабушкаcmd(self, message: Message):
-        """Что теплое в вмертвой бабушке ?"""
+        """Что теплое в мёртвой бабушке ?"""
         await self.send_voice(message, "https://telesco.pe/SosatXuyEtoXorosho/29")
 
     async def взрослаяcmd(self, message: Message):
