@@ -1,6 +1,6 @@
 __version__ = (1, 0, 0)
 # meta developer: @musiczhara0
-# for more info: https://github.com/musiczhara0/sosat/blob/main/Idi%20naxuy.py
+# for more info: https://raw.githubusercontent.com/musiczhara0/sosat/refs/heads/main/memes.py
 from .. import loader  # Импортируем необходимые модули
 from telethon.tl.types import Message
 
