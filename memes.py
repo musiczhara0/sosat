@@ -17,7 +17,7 @@ class memes(loader.Module):
         """Иди бери ёршик чисти унитаз"""
         await self.send_voice(message, "https://telesco.pe/SosatXuyEtoXorosho/26")
 
-    async def пидорасcmd(self, message: Message):
+    async def долбоёбcmd(self, message: Message):
         """Слыш ты пидорас, отсосёшь только ты"""
         await self.send_voice(message, "https://telesco.pe/SosatXuyEtoXorosho/27")
 
