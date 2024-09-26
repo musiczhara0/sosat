@@ -45,6 +45,13 @@ class memes(loader.Module):
         """Скинь хуй"""
         await self.send_voice(message, "https://telesco.pe/SosatXuyEtoXorosho/33")
 
+     async def физкультcmd(self, message: Message):
+        """Физкульт зарядка под ебейший бит"""
+        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/34")
+
+      async def выхлопcmd(self, message: Message):
+        """Я вообще делаю что хочу - ебейший выхлоп"""
+        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/34")
 
     
     async def send_voice(self, message: Message, link: str):
