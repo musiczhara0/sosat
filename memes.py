@@ -1,6 +1,7 @@
-__version__ = (1, 0, 3)
+__version__ = (1, 0, 4)
 # meta developer: @musiczhara0
 # for more info: https://raw.githubusercontent.com/musiczhara0/sosat/refs/heads/main/memes.py
+
 from .. import loader  # Импортируем необходимые модули
 from telethon.tl.types import Message
 
@@ -51,7 +52,7 @@ class memes(loader.Module):
 
     async def выхлопcmd(self, message: Message):
         """Я вообще делаю что хочу - ебейший выхлоп"""
-        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/34")
+        await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/35")  # Исправлена ссылка на другую
 
     async def send_voice(self, message: Message, link: str):
         """Общий метод для отправки голосового сообщения по ссылке"""
