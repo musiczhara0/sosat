@@ -1,4 +1,4 @@
-__version__ = (1, 0, 1)
+__version__ = (1, 0, 2)
 # meta developer: @musiczhara0
 # for more info: https://raw.githubusercontent.com/musiczhara0/sosat/refs/heads/main/memes.py
 from .. import loader  # Импортируем необходимые модули
