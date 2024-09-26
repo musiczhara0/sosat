@@ -49,12 +49,11 @@ class memes(loader.Module):
         """Физкульт зарядка под ебейший бит"""
         await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/34")
 
-      async def выхлопcmd(self, message: Message):
+     async def выхлопcmd(self, message: Message):
         """Я вообще делаю что хочу - ебейший выхлоп"""
         await self.send_voice(message, "https://t.me/SosatXuyEtoXorosho/34")
 
-    
-    async def send_voice(self, message: Message, link: str):
+      async def send_voice(self, message: Message, link: str):
         """Общий метод для отправки голосового сообщения по ссылке"""
         reply = await message.get_reply_message()
         await message.delete()
